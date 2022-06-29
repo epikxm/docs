@@ -46,10 +46,10 @@ csp (Content-Security-Policy)
 
 헤더에 노출되는 서버 정보를 제거하기 위해 X-Powered-By를 사용한다.
 
-> Helmet 미적용
+> Helmet 미적용  
 > <img width="400" src="./no-helmet.png" />
 
-> Helmet 적용
+> Helmet 적용  
 > <img width="510" src="./apply-helmet.png" />
 
 또는 다음과 같이 어플리케이션이 PHP를 사용하지 않더라도 X-Powered-By 헤더가 그렇게 보이도록 설정할 수 있다.
