@@ -1,3 +1,3 @@
 # docs
-Doing nothing cause nothing to happen.
+Doing nothing cause nothing to happen.  
 Do it now!
