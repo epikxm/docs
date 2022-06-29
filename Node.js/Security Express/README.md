@@ -2,8 +2,8 @@
 
 ## Helmet 사용
 
-Helmet은 다양한 http 헤더를 설정하여 Express 앱을 보호하는데 도움이 된다.
-[설치경로](https://www.npmjs.com/package/helmet)
+helmet은 다양한 http 헤더를 설정하여 Express 앱을 보호하는데 도움이 된다.  
+[npm helmet](https://www.npmjs.com/package/helmet)
 
 ```javascript
 import helmet from "helmet";
@@ -20,14 +20,14 @@ import helmet from "helmet";
 
 // ...
 
-app.use(helmet.contentSecurityPolicy());
+app.use(helmet.contentSecurityPolicy()); // [1]
 app.use(helmet.crossOriginEmbedderPolicy());
 app.use(helmet.crossOriginOpenerPolicy());
 app.use(helmet.crossOriginResourcePolicy());
 app.use(helmet.dnsPrefetchControl());
 app.use(helmet.expectCt());
 app.use(helmet.frameguard());
-app.use(helmet.hidePoweredBy());
+app.use(helmet.hidePoweredBy()); // [2]
 app.use(helmet.hsts());
 app.use(helmet.ieNoOpen());
 app.use(helmet.noSniff());
@@ -37,12 +37,11 @@ app.use(helmet.referrerPolicy());
 app.use(helmet.xssFilter());
 ```
 
-### csp
+#### **_[1] Content-Security-Policy_**
 
-csp (Content-Security-Policy)  
 브라우저에서 사용하는 컨텐츠 기반의 보안 정책으로 XSS나 Data Injection, Click Jacking등 웹 페이지에 악성 스크립트를 삽입하는 공격기법들을 막기 위해 사용.
 
-### hidePoweredBy
+### **_[2] hidePoweredBy_**
 
 헤더에 노출되는 서버 정보를 제거하기 위해 X-Powered-By를 사용한다.
 
