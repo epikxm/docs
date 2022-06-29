@@ -1,4 +1,4 @@
-# Security Express
+# Node.js의 웹 프레임워크 Express를 사용할 때 보안 적용 가이드.
 
 ## Helmet 사용
 
@@ -34,8 +34,7 @@ app.use(helmet.frameguard()); // [6]
 app.use(helmet.originAgentCluster());
 app.use(helmet.permittedCrossDomainPolicies());
 app.use(helmet.referrerPolicy());
-app.use(helmet.xssFilter());
-[7];
+app.use(helmet.xssFilter()); // [7]
 ```
 
 ### **_[1] Content-Security-Policy_**
