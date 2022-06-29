@@ -37,12 +37,12 @@ app.use(helmet.referrerPolicy());
 app.use(helmet.xssFilter());
 ```
 
-#### csp
+### csp
 
 csp (Content-Security-Policy)  
 브라우저에서 사용하는 컨텐츠 기반의 보안 정책으로 XSS나 Data Injection, Click Jacking등 웹 페이지에 악성 스크립트를 삽입하는 공격기법들을 막기 위해 사용.
 
-#### hidePoweredBy
+### hidePoweredBy
 
 헤더에 노출되는 서버 정보를 제거하기 위해 X-Powered-By를 사용한다.
 
@@ -56,7 +56,7 @@ csp (Content-Security-Policy)
 
 > app.use(helmet.hidePoweredBy({ setTo: 'PHP 4.2.0' }));
 
-#### HSTS
+### HSTS
 
 HTTP Strict Transport Security  
 보안을 강화시킬 목적으로 웹사이트에 접속할 때 강제적으로 HTTPS Protocol로만 접속하게 하는 기능이다.
@@ -65,26 +65,26 @@ HTTP Strict Transport Security
 
 [HSTS에 대해 더 읽어보기](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=aepkoreanet&logNo=221575708943)
 
-#### IeNoOpen
+### IeNoOpen
 
 IE8 이후 버전에서 X-Download-Options를 설정한다. 이 옵션은 IE8 버전 이상의 인터넷 익스플로러에서 다운로드된 것들을 바로 여는대신 저장을 하게 하는 옵션이다. 사용자는 다운로드 파일을 먼저 저장하고 다른 응용프로그램에서 열어야 한다.
 
-#### noCache
+### noCache
 
 클라이언트측에서 캐싱을 사용하지 않도록 하는 설정이다.
 
-#### noSniff
+### noSniff
 
 X-Content-Type-Options 를 설정하여 선언된 콘텐츠 유형으로부터 벗어난 응답에 대한 브라우저의 MIME 스니핑을 방지한다. MIME이란 Multipurpose Internet Mail Extensions의 약자로 클라이언트에게 전송된 문서의 다양성을 알려주기 위한 포맷이다. 브라우저는 리소스를 내려받을 때 MIME 타입을 보고 동작하기에 정확한 설정이 중요하다.
 
 MIME 스니핑이란 브라우저가 특정 파일을 읽을 때 파일의 실제 내용과 Content-Type에 설정된 내용이 다르면 파일로 부터 형식을 추측하여 실행하는 것인데, 편리함을 위한 기능이지만 공격자에게 악용 될 가능성이 있다.
 
-#### frameguard
+### frameguard
 
 X-Frame-Options 헤더를 설정하여 클릭재킹에 대한 보호를 제공한다.  
 클릭재킹이란 사용자가 자신이 클릭하고 있다고 인지하는 것과 다른 것을 클릭하도록 하여 속이는 해킹 기법이다. 속이기 위해 보이지 않는 레이어에 보이지 않는 버튼을 만드는 방법이 있다.
 
-#### xssFilter
+### xssFilter
 
 X-XSS-Protection을 설정하여 대부분의 최신 웹 브라우저에서 XSS(Cross-site scripting) 필터를 사용하도록 한다.
 
