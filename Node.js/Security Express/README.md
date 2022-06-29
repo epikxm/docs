@@ -26,64 +26,77 @@ app.use(helmet.crossOriginOpenerPolicy());
 app.use(helmet.crossOriginResourcePolicy());
 app.use(helmet.dnsPrefetchControl());
 app.use(helmet.expectCt());
-app.use(helmet.frameguard());
 app.use(helmet.hidePoweredBy()); // [2]
-app.use(helmet.hsts());
-app.use(helmet.ieNoOpen());
-app.use(helmet.noSniff());
+app.use(helmet.hsts()); // [3]
+app.use(helmet.ieNoOpen()); // [4]
+app.use(helmet.noSniff()); // [5]
+app.use(helmet.frameguard()); // [6]
 app.use(helmet.originAgentCluster());
 app.use(helmet.permittedCrossDomainPolicies());
 app.use(helmet.referrerPolicy());
 app.use(helmet.xssFilter());
+[7];
 ```
 
-#### **_[1] Content-Security-Policy_**
+### **_[1] Content-Security-Policy_**
+
+###### app.use(helmet.contentSecurityPolicy());
 
 브라우저에서 사용하는 컨텐츠 기반의 보안 정책으로 XSS나 Data Injection, Click Jacking등 웹 페이지에 악성 스크립트를 삽입하는 공격기법들을 막기 위해 사용.
 
 ### **_[2] hidePoweredBy_**
 
+###### app.use(helmet.hidePoweredBy());
+
 헤더에 노출되는 서버 정보를 제거하기 위해 X-Powered-By를 사용한다.
 
-> Helmet 미적용  
+> **Helmet 미적용**
+>
 > <img width="400" src="./no-helmet.png" />
 
-> Helmet 적용  
+> **Helmet 적용**
+>
 > <img width="510" src="./apply-helmet.png" />
 
 또는 다음과 같이 어플리케이션이 PHP를 사용하지 않더라도 X-Powered-By 헤더가 그렇게 보이도록 설정할 수 있다.
 
 > app.use(helmet.hidePoweredBy({ setTo: 'PHP 4.2.0' }));
 
-### HSTS
+### **_[3] hsts_**
+
+###### app.use(helmet.hsts());
 
 HTTP Strict Transport Security  
 보안을 강화시킬 목적으로 웹사이트에 접속할 때 강제적으로 HTTPS Protocol로만 접속하게 하는 기능이다.
 
 > HTTPS(Hypertext Transfer Protocol Secure) Protocol이란, Web Browser와 Web Server 간에 “암호 통신(SSL/TLS 통신)”을 수행하여, 통신 도중에 정보가 제3자에게 노출이 되지 않도록 하는 통신 Protocol입니다. 즉 HTTP(Hypertext Transfer Protocol) 통신 내용을 SSL/TLS 방식으로 암호화시켜 통신하는 Protocol입니다.
 
-[HSTS에 대해 더 읽어보기](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=aepkoreanet&logNo=221575708943)
+[more...](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=aepkoreanet&logNo=221575708943)
 
-### IeNoOpen
+### **_[4] IeNoOpen_**
+
+###### app.use(helmet.ieNoOpen());
 
 IE8 이후 버전에서 X-Download-Options를 설정한다. 이 옵션은 IE8 버전 이상의 인터넷 익스플로러에서 다운로드된 것들을 바로 여는대신 저장을 하게 하는 옵션이다. 사용자는 다운로드 파일을 먼저 저장하고 다른 응용프로그램에서 열어야 한다.
 
-### noCache
+### **_[5] noSniff_**
 
-클라이언트측에서 캐싱을 사용하지 않도록 하는 설정이다.
-
-### noSniff
+###### app.use(helmet.noSniff());
 
 X-Content-Type-Options 를 설정하여 선언된 콘텐츠 유형으로부터 벗어난 응답에 대한 브라우저의 MIME 스니핑을 방지한다. MIME이란 Multipurpose Internet Mail Extensions의 약자로 클라이언트에게 전송된 문서의 다양성을 알려주기 위한 포맷이다. 브라우저는 리소스를 내려받을 때 MIME 타입을 보고 동작하기에 정확한 설정이 중요하다.
 
 MIME 스니핑이란 브라우저가 특정 파일을 읽을 때 파일의 실제 내용과 Content-Type에 설정된 내용이 다르면 파일로 부터 형식을 추측하여 실행하는 것인데, 편리함을 위한 기능이지만 공격자에게 악용 될 가능성이 있다.
 
-### frameguard
+### **_[6] frameguard_**
+
+###### app.use(helmet.frameguard());
 
 X-Frame-Options 헤더를 설정하여 클릭재킹에 대한 보호를 제공한다.  
 클릭재킹이란 사용자가 자신이 클릭하고 있다고 인지하는 것과 다른 것을 클릭하도록 하여 속이는 해킹 기법이다. 속이기 위해 보이지 않는 레이어에 보이지 않는 버튼을 만드는 방법이 있다.
 
-### xssFilter
+### **_[7] xssFilter_**
+
+###### app.use(helmet.xssFilter());
 
 X-XSS-Protection을 설정하여 대부분의 최신 웹 브라우저에서 XSS(Cross-site scripting) 필터를 사용하도록 한다.
 
