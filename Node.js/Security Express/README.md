@@ -5,7 +5,7 @@
 Helmet은 다양한 http 헤더를 설정하여 Express 앱을 보호하는데 도움이 된다.
 [설치경로](https://www.npmjs.com/package/helmet)
 
-```node
+```javascript
 import helmet from "helmet";
 
 // ...
@@ -15,7 +15,7 @@ aoo.use(helmet());
 
 위 코드는 다음과 같다.
 
-```node
+```javascript
 import helmet from "helmet";
 
 // ...
@@ -94,37 +94,89 @@ X-XSS-Protection을 설정하여 대부분의 최신 웹 브라우저에서 XSS(
 
 ## 어플리케이션 보안
 
+### **_비동기 코드_**
+
 비동기 콜백 함수는 Node.js의 강력한 기능 중 하나이지만 중첩 레이어를 늘리면 콜백지옥(Callback Hell)을 겪게 된다. 콜백지옥을 벗어나기위해 다음과 같이 async/await 형태의 코드로 변환하고 예외처리를 하도록 한다.  
 또는 [프라미스 체이닝](https://ko.javascript.info/promise-chaining)을 사용한다.
 
-```node
+```javascript
+---
 const func1 = async (name: string) => {
-    console.log('func1:', name);
+  console.log('func1:', name);
 }
 
 const func2 = async (name: string) => {
-    console.log('func2:', name);
+  console.log('func2:', name);
 }
 
 const func3 = async (name: string) => {
-    console.log('func3:', name);
+  console.log('func3:', name);
 }
 
 const func4 = async (name: string) => {
-    console.log('func4:', name);
+  console.log('func4:', name);
 }
 
 (async() => {
-    try {
-        let res1 = await func1("input1");
-        let res2 = await func2("input2");
-        let res3 = await func3("input3");
-        let res4 = await func4("input4");
-    } catch(err: any) {
-        console.log(err);
-    }
+  try {
+    let res1 = await func1("input1");
+    let res2 = await func2("input2");
+    let res3 = await func3("input3");
+    let res4 = await func4("input4");
+  } catch(err: any) {
+    console.log(err);
+  }
 })();
+---
 ```
+
+### **_요청 크기 제한 설정 Set request size limits_**
+
+요청 크기에 제한이 없는 경우, 공격자는 서버 메모리를 고갈시키거나 디스크 공간을 채울 수 있는 큰 요청 본문을 사용하여 요청을 보낼 수 있다. [raw-body 패키지](https://www.npmjs.com/package/raw-body)를 사용하여 모든 요청에 대한 요청 본문 크기를 제한할 수 있다.
+
+```javascript
+---
+const contentType = require("content-type");
+const express = require("express");
+const getRawBody = require("raw-body");
+
+const app = express();
+
+app.use(function (req, res, next) {
+  if (!["POST", "PUT", "DELETE"].includes(req.method)) {
+    next();
+	return;
+  }
+
+  getRawBody(
+    req,
+    {
+      length: req.headers["content-length"],
+      limit: "1kb",
+      encoding: contentType.parse(req).parameters.charset,
+    },
+    function (err, string) {
+      if (err) return next(err);
+      req.text = string;
+      next();
+    }
+  );
+});
+---
+```
+
+그러나 파일을 업로드할 때와 같이 일부 요청에는 요청 본문에 큰 페이로드가 있을 수 있으므로, 모든 요청에 대한 요청 크기 제한을 수정하는 것을 올바른 동작이 아니다. 또한 JSON을 구문 분석하는 작업은 차단 작업이기 때문에 JSON 유형을 사용하는 입력은 다중 부분 입력보다 더 위험하다. 따라서 다양한 내용 유형에 대한 요청 크기 제한을 설정해야 한다.  
+다음과 같은 Express 미들웨어를 사용하면 매우 쉽게 이 작업을 수행할 수 있다.
+
+```javascript
+---
+app.use(express.urlencoded({ extended: true, limit: "1kb" }));
+app.use(express.json({ limit: "1kb" }));
+---
+```
+
+공격자는 요청의 Content-Type 헤더를 변경하고, 요청 크기 제한을 무시할 수 있다. 따라서 요청을 처리하기 전에 요청에 포함된 데이터가 요청 헤더에 명시된 유형에 대해 검증되어야 한다.  
+각 요청에 대한 내용 유형 유효성 검사가 성능에 심각한 영향을 미치는 경우 특정 내용 유형 또는 미리 결정된 크기보다 큰 요청만 유효성 검사를 할 수 있다.
 
 ---
 
