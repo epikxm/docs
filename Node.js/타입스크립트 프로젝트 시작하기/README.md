@@ -1,14 +1,3 @@
----
-title: Node.js + Typescript
-author:
-    name: knbang
-    link: https://github.com/cotes2020
-date: 2022-06-24 01:10:00 +0800
-categories: [Node.js]
-tags: [Node.js]
-render_with_liquid: false
----
-
 # 타입스크립트 프로젝트 시작하기
 
 Node.js 프로젝트에 Typescript를 사용하는 경우에 대한 설명이다.
