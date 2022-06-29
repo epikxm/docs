@@ -105,7 +105,7 @@ X-XSS-Protection을 설정하여 대부분의 최신 웹 브라우저에서 XSS(
 
 ## 어플리케이션 보안
 
-### **_비동기 코드_**
+### **_1. 비동기 코드_**
 
 비동기 콜백 함수는 Node.js의 강력한 기능 중 하나이지만 중첩 레이어를 늘리면 콜백지옥(Callback Hell)을 겪게 된다. 콜백지옥을 벗어나기위해 다음과 같이 async/await 형태의 코드로 변환하고 예외처리를 하도록 한다.  
 또는 [프라미스 체이닝](https://ko.javascript.info/promise-chaining)을 사용한다.
@@ -141,7 +141,7 @@ const func4 = async (name: string) => {
 ---
 ```
 
-### **_요청 크기 제한 설정 Set request size limits_**
+### **_2. 요청 크기 제한 설정 Set request size limits_**
 
 요청 크기에 제한이 없는 경우, 공격자는 서버 메모리를 고갈시키거나 디스크 공간을 채울 수 있는 큰 요청 본문을 사용하여 요청을 보낼 수 있다. [raw-body 패키지](https://www.npmjs.com/package/raw-body)를 사용하여 모든 요청에 대한 요청 본문 크기를 제한할 수 있다.
 
@@ -188,6 +188,12 @@ app.use(express.json({ limit: "1kb" }));
 
 공격자는 요청의 Content-Type 헤더를 변경하고, 요청 크기 제한을 무시할 수 있다. 따라서 요청을 처리하기 전에 요청에 포함된 데이터가 요청 헤더에 명시된 유형에 대해 검증되어야 한다.  
 각 요청에 대한 내용 유형 유효성 검사가 성능에 심각한 영향을 미치는 경우 특정 내용 유형 또는 미리 결정된 크기보다 큰 요청만 유효성 검사를 할 수 있다.
+
+### **_3. 입력 유효성 검사 수행 Perform input validation_**
+
+입력 유효성 검사 실패로 인해 다양한 유형의 어플리케이션 공격이 발생할 수 있다. SQL Injection, Cross-Site Scripting, Command Injection, Local/Remote File Inclusion, Denial of Service, Directory Traversal, LDAP Injection 등이 있는데, 가장 좋은 방법으로는 승인된 입력만 받도록 하는 것이다.
+
+[validator](https://www.npmjs.com/package/validator): 문자열 검사 라이브러리
 
 ---
 
