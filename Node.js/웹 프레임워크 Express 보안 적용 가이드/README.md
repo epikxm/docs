@@ -10,7 +10,7 @@ import helmet from "helmet";
 
 // ...
 
-aoo.use(helmet());
+app.use(helmet());
 ```
 
 위 코드는 다음과 같다.
