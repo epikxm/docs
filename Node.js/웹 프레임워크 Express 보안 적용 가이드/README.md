@@ -51,11 +51,11 @@ app.use(helmet.xssFilter()); // [7]
 
 > **Helmet 미적용**
 >
-> <img width="400" src="./no-helmet.png" />
+> <img width="400" src="https://github.com/epikxm/docs/blob/main/Node.js/%EC%9B%B9%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC%20Express%20%EB%B3%B4%EC%95%88%20%EC%A0%81%EC%9A%A9%20%EA%B0%80%EC%9D%B4%EB%93%9C/no-helmet.png?raw=true" />
 
 > **Helmet 적용**
 >
-> <img width="510" src="./apply-helmet.png" />
+> <img width="510" src="https://github.com/epikxm/docs/blob/main/Node.js/%EC%9B%B9%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC%20Express%20%EB%B3%B4%EC%95%88%20%EC%A0%81%EC%9A%A9%20%EA%B0%80%EC%9D%B4%EB%93%9C/apply-helmet.png?raw=true" />
 
 또는 다음과 같이 어플리케이션이 PHP를 사용하지 않더라도 X-Powered-By 헤더가 그렇게 보이도록 설정할 수 있다.
 
