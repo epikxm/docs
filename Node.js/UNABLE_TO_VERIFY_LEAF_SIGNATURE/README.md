@@ -1,6 +1,6 @@
 # UNABLE_TO_VERIFY_LEAF_SIGNATURE 에러 대처
 
-Nodejs 프로젝트에서 라이브러리 다운로드를 위해 `npm install` 했을 때 `UNABLE_TO_VERIFY_LEAF_SIGNATURE` 라는 에러가 나왔다.
+Nodejs 프로젝트에서 라이브러리 다운로드를 위해 `npm i` 했을 때 `UNABLE_TO_VERIFY_LEAF_SIGNATURE` 라는 에러가 나왔다.
 단순히 구글링하여 찾은 문제의 원인은 `프록시를 통해 외부 인터넷 사용시 생기는 인증서 문제` 라고.  
 [출처](https://engkimbs.tistory.com/895)
 
