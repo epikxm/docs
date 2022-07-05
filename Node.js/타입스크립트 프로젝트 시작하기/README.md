@@ -6,7 +6,7 @@ Node.js 프로젝트에 Typescript를 사용하는 경우에 대한 설명이다
 
 **폴더 구조**
 
-```node
+```javascript
 [project: /]
     > dist
     > node_modules
@@ -20,13 +20,13 @@ Node.js 프로젝트에 Typescript를 사용하는 경우에 대한 설명이다
 
 Typescript 미설치시 글로벌로 설치한다.
 
-```node
+```javascript
 > npm i -g typescript
 ```
 
 다음 모듈을 추가한다.
 
-```node
+```javascript
 > yarn add @types/node
 > yarn add -D ts-node tsc-watch [typescript]
 ```
@@ -37,13 +37,13 @@ Typescript 미설치시 글로벌로 설치한다.
 
 ## Typescript 환경 설정(tsconfig.json 생성)
 
-```node
+```javascript
 > tsc --init --rootDir src --outDir ./dist --esModuleInterop --lib ES2020 --module commonjs --noImplicitAny true
 ```
 
 ## tsconfig.json 수정
 
-```node
+```javascript
 {
   "compilerOptions": {
     ...
@@ -55,7 +55,7 @@ Typescript 미설치시 글로벌로 설치한다.
 
 ## package.json 수정
 
-```node
+```javascript
   "scripts": {
     "start": "tsc-watch --onSuccess \"ts-node dist/app.js\" "
   }
@@ -63,7 +63,7 @@ Typescript 미설치시 글로벌로 설치한다.
 
 ## 실행
 
-```node
+```javascript
 > yarn start
 ```
 
