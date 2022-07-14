@@ -37,13 +37,13 @@ app.use(helmet.referrerPolicy());
 app.use(helmet.xssFilter()); // [7]
 ```
 
-### **_[1] Content-Security-Policy_**
+### **_1. Content-Security-Policy_**
 
 ##### **_app.use(helmet.contentSecurityPolicy());_**
 
 브라우저에서 사용하는 컨텐츠 기반의 보안 정책으로 XSS나 Data Injection, Click Jacking등 웹 페이지에 악성 스크립트를 삽입하는 공격기법들을 막기 위해 사용.
 
-### **_[2] hidePoweredBy_**
+### **_2. hidePoweredBy_**
 
 ##### **_app.use(helmet.hidePoweredBy());_**
 
@@ -61,7 +61,7 @@ app.use(helmet.xssFilter()); // [7]
 
 > app.use(helmet.hidePoweredBy({ setTo: 'PHP 4.2.0' }));
 
-### **_[3] hsts_**
+### **_3. hsts_**
 
 ##### **_app.use(helmet.hsts());_**
 
@@ -72,13 +72,13 @@ HTTP Strict Transport Security
 
 [more...](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=aepkoreanet&logNo=221575708943)
 
-### **_[4] IeNoOpen_**
+### **_4. IeNoOpen_**
 
 ##### **_app.use(helmet.ieNoOpen());_**
 
 IE8 이후 버전에서 X-Download-Options를 설정한다. 이 옵션은 IE8 버전 이상의 인터넷 익스플로러에서 다운로드된 것들을 바로 여는대신 저장을 하게 하는 옵션이다. 사용자는 다운로드 파일을 먼저 저장하고 다른 응용프로그램에서 열어야 한다.
 
-### **_[5] noSniff_**
+### **_5. noSniff_**
 
 ##### **_app.use(helmet.noSniff());_**
 
@@ -86,14 +86,14 @@ X-Content-Type-Options 를 설정하여 선언된 콘텐츠 유형으로부터
 
 MIME 스니핑이란 브라우저가 특정 파일을 읽을 때 파일의 실제 내용과 Content-Type에 설정된 내용이 다르면 파일로 부터 형식을 추측하여 실행하는 것인데, 편리함을 위한 기능이지만 공격자에게 악용 될 가능성이 있다.
 
-### **_[6] frameguard_**
+### **_6. frameguard_**
 
 ##### **_app.use(helmet.frameguard());_**
 
 X-Frame-Options 헤더를 설정하여 클릭재킹에 대한 보호를 제공한다.  
 클릭재킹이란 사용자가 자신이 클릭하고 있다고 인지하는 것과 다른 것을 클릭하도록 하여 속이는 해킹 기법이다. 속이기 위해 보이지 않는 레이어에 보이지 않는 버튼을 만드는 방법이 있다.
 
-### **_[7] xssFilter_**
+### **_7. xssFilter_**
 
 ##### **_app.use(helmet.xssFilter());_**
 
