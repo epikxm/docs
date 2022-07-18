@@ -91,11 +91,3 @@ console.log(car.getFullName());
 
 ## 6. error.cause
 
-# ES2022 What's New?
-
-## Top-level await operations
-
-
-
-## Private fields and method declarations
-
