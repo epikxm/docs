@@ -27,8 +27,8 @@ Typescript 미설치시 글로벌로 설치한다.
 다음 모듈을 추가한다.
 
 ```javascript
-> yarn add @types/node
-> yarn add -D ts-node tsc-watch [typescript]
+> npm i @types/node
+> npm i -D ts-node tsc-watch [typescript]
 ```
 
 **@types/node** Node.js에서 type 정의를 포함하고 있는 패키지  
