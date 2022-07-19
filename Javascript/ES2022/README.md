@@ -23,71 +23,25 @@ if (userType === "ADMIN") {
 }
 ```
 
-
 ## 2. Private fields and method declaration
 
+> 해시('#') 접두사를 붙여 private 필드/메소드로 사용.
+> Typescript 사용시 반드시 초기화 필요.
+
 ```javascript
-enum COLOR { WHITE, BLACK, RED, BLUE };
-
-class Car {
-    // '#'키워드를 통해 private 필드를 선언한다.
-
-    #color: COLOR = COLOR.WHITE;
-    #power: number = 455;
-    #brend: string = '';
-
-    // 변수 선언시 초기화 필수.
-    // Property '#model' has no initializer and is not definitely assigned in the constructor.
-    #model: string;
-
-    // 더 이상 생성자를 통해 클래스 필드를 생성하지 않아도 된다.
-    // constructor () {}
-
-    // '#' 키워드를 통해 private 메소드 선언한다.
-    #setBrend = (value: string) => {
-        this.#brend = value;
-    }
-
-    setModel = (value: string) => {
-        this.#model = value;
-    }
-
-    getBrean = () => {
-        return this.#brend;
-    }
-
-    getModel = () => {
-        return this.#model;
-    }
-
-    getFullName = () => {
-        return this.#brend + ' ' + this.#model;
-    }
+class MyClass {
+	#field1: number; // Property '#field' has no initializer and is not definitely assigned in the constructor.
+	#field2: number = 10;
+	#method = () => {
+		return this.#field2;
+	};
 }
-
-const car = new Car();
-
-// private 메소드는 바로 엑세스 불가능하다.
-car.setBrend('VOLVO');
-car.setModel('XC60 T8 PHEV');
-
-// private 필드는 바로 엑세스 불가능하다.
-// Property '#power' is not accessible outside class 'Car' because it has a private identifier.
-console.log(car.#power);
-
-console.log(car.getBrean());
-console.log(car.getModel());
-console.log(car.getFullName());
 ```
 
 ## 3. Static class field & private static methods
 
-
 ## 4. Method .at() for indexing
-
 
 ## 5. Object.hasOwn()
 
-
 ## 6. error.cause
-
