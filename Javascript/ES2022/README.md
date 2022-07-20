@@ -2,8 +2,8 @@
 
 ## 1. Top level await operator
 
-> async 없이 await 사용 가능.  
-> 최상위 모듈에서도 사용 가능.  
+- async 없이 await 사용 가능.  
+- 최상위 모듈에서도 사용 가능.  
 
 ```javascript
 // Example 1
@@ -26,8 +26,8 @@ if (userType === "ADMIN") {
 
 ## 2. Private fields and method declaration
 
-> 해시('#') 접두사를 붙여 private 필드/메소드로 사용.  
-> Typescript 에서는 선언과 동시에 사용시 초기화 필요.
+- 해시('#') 접두사를 붙여 private 필드/메소드로 사용.  
+- Typescript 에서는 선언과 동시에 사용시 초기화 필요.
 
 ```javascript
 class MyClass {
@@ -41,9 +41,9 @@ class MyClass {
 
 ## 3. Static class field & private static methods
 
-> 해시('#') 접두사를 붙여 private 필드/메소드로 사용.  
-> static 필드는 선언후 초기화 하지 않아도 됨 (초기값: undefined)  
-> 인스턴스는 static 필드/메소드를 억세스 할 수 없음.  
+- 해시('#') 접두사를 붙여 private 필드/메소드로 사용.  
+- static 필드는 선언후 초기화 하지 않아도 됨 (초기값: undefined)  
+- 인스턴스는 static 필드/메소드를 억세스 할 수 없음.  
 
 ```javascript
 class MyClass {
@@ -56,6 +56,13 @@ class MyClass {
 ```
 ## 4. Method .at() for indexing
 
-## 5. Object.hasOwn()
+```javascript
+const list = [1, 2, 3, 4, 5];
 
-## 6. error.cause
+console.log(list.at(-6)); // undefined
+console.log(list.at(-1)); // 5
+console.log(list.at(0)); // 1
+console.log(list.at(1)); // 2
+```
+
+## 5. error.cause
