@@ -64,5 +64,3 @@ console.log(list.at(-1)); // 5
 console.log(list.at(0)); // 1
 console.log(list.at(1)); // 2
 ```
-
-## 5. error.cause
