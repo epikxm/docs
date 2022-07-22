@@ -64,3 +64,30 @@ console.log(list.at(-1)); // 5
 console.log(list.at(0)); // 1
 console.log(list.at(1)); // 2
 ```
+
+## 5. Object.hasOwn()
+
+-   객체에 속성이 있으면 true
+
+```javascript
+---
+const student = {
+    name: "Mark",
+    age: 18,
+};
+console.log(Object.hasOwn(student, "age")); // true
+console.log(Object.hasOwn(student, "grade")); // false
+---
+```
+
+-   tsconfig.json 설정 필요
+
+```
+{
+  "compilerOptions": {
+    ...
+    "lib": ["es2022"], /* Specify a set of bundled library declaration files that describe the target runtime environment. */
+    ...
+  }
+}
+```
