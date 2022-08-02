@@ -36,7 +36,7 @@ if (userType === "ADMIN") {
 ---
 ```
 
-## 2. Private fields and method declaration
+## Private fields and method declaration
 
 -   해시('#') 접두사를 붙여 private 필드/메소드로 사용.
 -   Typescript 에서는 선언과 동시에 사용시 초기화 필요.
@@ -53,7 +53,7 @@ class MyClass {
 ---
 ```
 
-## 3. Static class field & private static methods
+## Static class field & private static methods
 
 -   해시('#') 접두사를 붙여 private 필드/메소드로 사용.
 -   static 필드는 선언후 초기화 하지 않아도 됨 (초기값: undefined)
@@ -71,7 +71,7 @@ class MyClass {
 ---
 ```
 
-## 4. Method .at() for indexing
+## Method .at() for indexing
 
 ```javascript
 ---
@@ -84,7 +84,7 @@ console.log(list.at(1)); // 2
 ---
 ```
 
-## 5. Object.hasOwn()
+## Object.hasOwn()
 
 -   객체에 속성이 있으면 true
 
