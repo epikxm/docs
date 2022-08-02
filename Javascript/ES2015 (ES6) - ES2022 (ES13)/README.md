@@ -1,6 +1,6 @@
 # ES2015(ES6) - ES2022(ES13)
 
-## ES2022 (ES13)
+### ES2022 (ES13)
 
 1. [ES2022: Top level await operator](#Top-Level-await-operator)
 2. [ES2022: Private fields and method declaration](#Private-fields-and-method-declaration)
@@ -8,7 +8,7 @@
 4. [ES2022: Method .at() for indexing](#Method-at-for-indexing)
 5. [ES2022: Object.hasOwn()](#Objecthasown)
 
-## ES2021 (ES12)
+### ES2021 (ES12)
 
 1. [ES2021: String.prototype.replaceAll()](#Stringprototypereplaceall)
 2. [ES2021: Promise.any()](#Promiseany)
