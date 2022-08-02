@@ -4,9 +4,9 @@
 
 1. [ES2022: Top level await operator](#Top-Level-await-operator)
 2. [ES2022: Private fields and method declaration](#Private-fields-and-method-declaration)
-3. [ES2022: Static class field & private static methods](#Static-class-field-&-private-static-methods)
-4. [ES2022: Method .at() for indexing](#Method-.at()-for-indexing)
-5. [ES2022: Object.hasOwn()](#Object.hasOwn())
+3. [ES2022: Static class field & private static methods](#static-class-field--private-static-methods)
+4. [ES2022: Method .at() for indexing](<#method-at()-for-indexing>)
+5. [ES2022: Object.hasOwn()](<#ObjecthasOwn()>)
 
 # ES2022 What's New?
 
