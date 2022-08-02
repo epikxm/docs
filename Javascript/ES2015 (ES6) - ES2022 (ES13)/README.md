@@ -39,6 +39,7 @@ if (userType === "ADMIN") {
 ```
 
 <br>
+
 ###### PrivateFieldsAndMethodDeclaration
 
 ## 2. Private fields and method declaration
