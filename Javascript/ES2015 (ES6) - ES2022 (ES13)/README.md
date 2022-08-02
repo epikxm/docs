@@ -12,8 +12,8 @@
 
 1. [ES2021: String.prototype.replaceAll()](#Stringprototypereplaceall)
 2. [ES2021: Promise.any()](#Promiseany)
-3. [ES2021: Logical assignment operators (논리 할당 연산자)](#Logical-assignment-operators-논리-할당-연산자)
-4. [ES2021: Numeric separators (숫자 구분 기호)](#Numeric-separators-숫자-구분-기호)
+3. [ES2021: Logical assignment operators 논리 할당 연산자](#Logical-assignment-operators-논리-할당-연산자)
+4. [ES2021: Numeric separators 숫자 구분 기호](#Numeric-separators-숫자-구분-기호)
 
 # ES2022 What's New?
 
