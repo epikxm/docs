@@ -8,6 +8,13 @@
 4. [ES2022: Method .at() for indexing](#Method-at-for-indexing)
 5. [ES2022: Object.hasOwn()](#Objecthasown)
 
+## ES2021 (ES12)
+
+1. [ES2021: String.prototype.replaceAll()](#Stringprototypereplaceall)
+2. [ES2021: Promise.any()](#Promiseany)
+3. [ES2021: Logical assignment operators (논리 할당 연산자)](#Logical-assignment-operators-논리-할당-연산자)
+4. [ES2021: Numeric separators (숫자 구분 기호)](#Numeric-separators-숫자-구분-기호)
+
 # ES2022 What's New?
 
 ## Top Level await operator
@@ -113,7 +120,7 @@ console.log(Object.hasOwn(student, "grade")); // false
 
 # ES2021 What's New?
 
-## 1. String.prototype.replaceAll()
+## String.prototype.replaceAll()
 
 -   정규식에 g 옵션을 통해 전역으로 변경했었던 방법에서 replaceAll 사용으로 간단해졌다.
 
@@ -124,7 +131,7 @@ console.log(Object.hasOwn(student, "grade")); // false
 ---
 ```
 
-## 2. Promise.any()
+## Promise.any()
 
 -   Promises를 인자값으로 받고 Promise중 하나라도 성공하면 해당 Promise를 반환한다. (OR 조건)
     > Promise.any([promises])
@@ -143,7 +150,7 @@ Promise.any(promises).then((value) => console.log(value));
 ---
 ```
 
-## 3. Logical assignment operators (논리 할당 연산자)
+## Logical assignment operators (논리 할당 연산자)
 
 ```javascript
 ---
@@ -159,7 +166,7 @@ obj.prop ??= foo();
 ---
 ```
 
-## 4. Numeric separators (숫자 구분 기호)
+## Numeric separators (숫자 구분 기호)
 
 ```javascript
 ---
