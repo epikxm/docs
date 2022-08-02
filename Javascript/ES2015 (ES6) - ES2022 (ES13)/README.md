@@ -1,6 +1,18 @@
+# ES2015(ES6) - ES2022(ES13)
+
+## ES2022 (ES13)
+
+1. [ES2022: Top level await operator](######TopLevelAwaitOperator)
+2. [ES2022: Private fields and method declaration](######PrivateFieldsAndMethodDeclaration)
+3. [ES2022: Static class field & private static methods](######StaticClassField&PrivateStaticMethods)
+4. [ES2022: Method .at() for indexing](<######MethodAt()ForIndexing>)
+5. [ES2022: Object.hasOwn()](<######Object.hasOwn()>)
+
 # ES2022 What's New?
 
-## 1. Top level await operator
+###### TopLevelAwaitOperator
+
+## Top Level await operator
 
 -   async 없이 await 사용 가능.
 -   최상위 모듈에서도 사용 가능.
@@ -26,6 +38,9 @@ if (userType === "ADMIN") {
 ---
 ```
 
+<br>
+###### PrivateFieldsAndMethodDeclaration
+
 ## 2. Private fields and method declaration
 
 -   해시('#') 접두사를 붙여 private 필드/메소드로 사용.
@@ -42,6 +57,10 @@ class MyClass {
 }
 ---
 ```
+
+<br>
+
+###### StaticClassField&PrivateStaticMethods
 
 ## 3. Static class field & private static methods
 
@@ -61,6 +80,10 @@ class MyClass {
 ---
 ```
 
+<br>
+
+###### MethodAt()ForIndexing
+
 ## 4. Method .at() for indexing
 
 ```javascript
@@ -73,6 +96,10 @@ console.log(list.at(0)); // 1
 console.log(list.at(1)); // 2
 ---
 ```
+
+<br>
+
+###### Object.hasOwn()
 
 ## 5. Object.hasOwn()
 
