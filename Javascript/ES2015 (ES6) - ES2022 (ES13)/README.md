@@ -15,6 +15,12 @@
 3. [ES2021: Logical assignment operators 논리 할당 연산자](#Logical-assignment-operators-논리-할당-연산자)
 4. [ES2021: Numeric separators 숫자 구분 기호](#Numeric-separators-숫자-구분-기호)
 
+### ES2020 (ES11)
+
+1. [ES2021: BigInt](#BigInt)
+1. [ES2021: Dynamic Import](#Dynamic-Import)
+   <br>
+
 # ES2022 What's New?
 
 ## Top Level await operator
@@ -118,6 +124,8 @@ console.log(Object.hasOwn(student, "grade")); // false
 }
 ```
 
+<br>
+
 # ES2021 What's New?
 
 ## String.prototype.replaceAll()
@@ -175,5 +183,47 @@ obj.prop ??= foo();
 // after
 10_000_000_000 // 100억
 console.log(10_000_000_000); // 10000000000
+---
+```
+
+<br>
+
+# ES2020 What's New?
+
+## BigInt
+
+-   정수뒤에 n을 붙이거나 BigInt()를 호출하여 생성
+
+```javascript
+---
+let a = 10;
+typeof a; // number
+
+let b = BigInt(a);
+typeof b; // bigint
+
+let c = a + b; // Error : 타입을 맞춰줘야 함
+let c = BigInt(a) + b; // 20n
+or
+let c = a + Number(b); // 20
+// BigInt가 Number로 형변환시 데이터가 정확하지 않을 수 있음.
+
+const theBiggestInt = 9007199254740991n;
+const bigintSum = theBiggestInt + 1n; // 9007199254740992n
+const alsoHuge = BigInt(9007199254740991); // 9007199254740991n
+typeof bigintSum // "bigint"
+---
+```
+
+## Dynamic Import
+
+-   동적 모듈 로딩
+
+```javascript
+---
+if (condition1 && condition2) {
+    const module = await import('./path/to/module.js');
+    module.doSomething();
+}
 ---
 ```
