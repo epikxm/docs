@@ -217,7 +217,7 @@ typeof bigintSum // "bigint"
 
 ## Dynamic Import
 
--   동적 모듈 로딩
+-   파일의 시작 부분이 아닌 필요시 모듈 호출 가능
 
 ```javascript
 ---
