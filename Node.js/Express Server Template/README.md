@@ -6,8 +6,9 @@ https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sh
 index.ts
 ---
 import https from "https";
-import express from "express";
+import express, { Application, Request, Response, NextFunction } from "express";
 import fs from "fs";
+import { hrtime } from "process";
 
 class Server {
     #ssl_options = {
@@ -18,28 +19,27 @@ class Server {
 
     #SSL_PORT = 443;
     #port: number = this.#SSL_PORT;
-    #app = express();
+    app: Application = express();
 
-    #thisobj: https.Server;
 
     Port(number: number = this.#SSL_PORT): this {
         this.#port = number;
         return this;
     }
 
-    get httpsObj(): https.Server {
-        return this.#thisobj;
+    constructor () {
+        this.app = express();
+        this.#config();
     }
 
-    constructor () {
-        this.#app.disable("x-powered-by");
-        this.#thisobj = https.createServer(this.#ssl_options, this.#app);
+    #config = (): void => {
+        this.app.disable("x-powered-by");
+        this.app.use((req: Request, res: Response, next: NextFunction) => {
+            res.header('Access-Control-Allow-Origin', '*');
+        });
     }
 }
 
 let server = new Server().Port();
-server.httpsObj
-server.listen(443);
-// console.log(server.httpsObj);
 ---
 ```
