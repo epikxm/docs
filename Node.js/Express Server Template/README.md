@@ -26,13 +26,14 @@ class ExpressServer {
     #SSL_PORT = 443;
     #app: Application = express();
 
-    server: https.Server;
+    public server: https.Server;
 
     constructor () {
         this.#app = express();
         this.#config();
-        this.server = https.createServer(this.#ssl_options, this.#app);
-        this.server.listen(this.#SSL_PORT);
+        this.server = https.createServer(this.#ssl_options, this.#app).listen(this.#SSL_PORT, () => {
+            console.log(`HTTPS: Express listening on port ${this.#SSL_PORT}`)
+        });
     }
 
     #config = (): void => {
@@ -52,7 +53,7 @@ class ExpressServer {
     }
 }
 
-// let server = new ExpressServer();
+let server = new ExpressServer();
 // console.log(server);
 
 
