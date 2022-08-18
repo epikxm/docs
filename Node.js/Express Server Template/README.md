@@ -18,6 +18,9 @@ import timeout from 'connect-timeout'; // https://www.npmjs.com/package/connect-
 import helmet from 'helmet'; // https://www.npmjs.com/package/helmet
 import cors from 'cors'; // https://www.npmjs.com/package/cors
 
+// routes
+import messages from '../routes/messages';
+
 class ExpressServer {
     #ssl_options = {
         ca: fs.readFileSync('./ssl/DigiCertCA.pem'),
@@ -30,16 +33,17 @@ class ExpressServer {
     #app: Application = express();
 
     // httpServer: http.Server;
-    httpsServer: https.Server;
+    // httpsServer: https.Server;
 
     constructor () {
         this.#app = express();
-        this.#app.listen(this.#WEB_PORT, () => console.log(`HTTP: CORS-enabled web server listening on port ${this.#WEB_PORT}`));
+        this.#app.listen(this.#WEB_PORT, () => console.log(`HTTP web server listening on port ${this.#WEB_PORT}`));
         this.#config();
+        this.#router();
         // this.httpServer = http.createServer(this.#app).listen(this.#WEB_PORT);
-        this.httpsServer = https.createServer(this.#ssl_options, this.#app).listen(this.#SSL_PORT, () => {
-            console.log(`HTTPS: Express listening on port ${this.#SSL_PORT}`)
-        });
+        // this.httpsServer = https.createServer(this.#ssl_options, this.#app).listen(this.#SSL_PORT, () => {
+        //     console.log(`HTTPS: Express listening on port ${this.#SSL_PORT}`);
+        // });
     }
 
     #config = (): void => {
@@ -58,6 +62,10 @@ class ExpressServer {
             next();
         });
     }
+
+    #router = (): void => {
+        this.#app.use(messages);
+    }
 }
 
 let server = new ExpressServer();
@@ -68,5 +76,20 @@ process.on('uncaughtException', (error: Error) => {
     console.log('uncaughtException', error);
 });
 
+---
+```
+
+```javascript
+---
+import express, { Request, Response} from 'express';
+const router = express.Router();
+
+const messages = () => {
+    router.get('/', (req: Request, res: Response) => {
+        res.send('hello world');
+    })
+};
+
+export default router;
 ---
 ```
