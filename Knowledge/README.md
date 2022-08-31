@@ -12,7 +12,7 @@
 
 MSA의 등장을 살펴보기 위해, 기존에는 어떤 방식으로 개발을 진행해 왔는지를 살펴보자.
 
-> <img width="514" src="https://github.com/epikxm/docs/blob/main/Knowledge/ma_msa.jpg?raw=true" />
+<img width="514" src="https://github.com/epikxm/docs/blob/main/Knowledge/ma_msa.jpg?raw=true" />
 
 Monolithic Architecture란, 소프트웨어의 모든 구성요소가 통합되어 있는 형태이다.
 
