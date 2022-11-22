@@ -21,7 +21,17 @@ SQL 인젝션 방어를 위한 기본사항:
 
 아래 코드와 같이 사용하지 말고!
 
+```javascript
+JavaScript:
+const id = <사용자로 부터 입력받은 값>;
+const sql = 'SELECT * FROM users WHERE id=' + id;
+connection.query(sql, function(err, rows) {
+  ...
+});
+```
+
 ```java
+JavaCode:
 String query = "SELECT account_balance FROM user_data WHERE user_name = "
              + request.getParameter("customerName");
 try {
@@ -33,7 +43,61 @@ try {
 
 다음 코드와 같이 사용해야 한다.
 
+```javascript
+JavaScript:
+
+escape() 함수
+
+// SQL Injection을 막기 위해서는 위의 코드처럼 사용자로 부터 입력받은 안전하지 않은 데이터는
+// connection.escape()를 통해 sql 구문을 생성하여야 합니다.
+const id = <사용자로 부터 입력받은 값>;
+const sql = 'SELECT * FROM users WHERE id=' + connection.escape(id);
+connection.query(sql, function(err, rows) {
+  ...
+});
+
+
+? 문자
+
+// escape함수대신에 ?문자를 사용할 수 있습니다. ?를 사용하면 위의 방법보다 더 간단하게
+// 사용할 수 있습니다. 여기서 ?와 params 배열은 순서대로 매치 됩니다.
+const id = <사용자로 부터 입력받은 값>;
+const sql = 'INSERT INTO users(id, password) VALUES(?, ?)';
+const params = [id, password];
+conn.query(sql, params, function(err, rows) {
+  ...
+});
+// 순서대로 매치된다.
+db.query(`update author set name=?, profile=? where id=?`, [post.name, post.profile, post.id], function (error, result) {
+    if (error) throw error;
+    response.writeHead(302, { Location: `/author` });
+    response.end();
+});
+
+
+escapeId() 함수
+// 데이터베이스, 테이블, 컬럼이름등과 같은 SQL Identifier을 사용자로 부터입력받는 경우,
+// escape함수가 아닌 escapeId함수로 escape할 수 있습니다.
+const tableName = <사용자로 부터 입력받은 값>;
+const sql = 'SELECT * FROM ' + connection.escapeId(tableName);
+connection.query(sql, function(err, rows) {
+  ...
+});
+
+
+?? 문자
+// 앞서 언급한 ?문자와 마찬가지로 escapeId() 함수를 대체하여 사용 할 수 있습니다.
+// ??문자도 마찬가지로 params배열과 순서대로 매치 됩니다.
+const tableName = <사용자로 부터 입력받은 값>;
+const sql = 'SELECT * FROM ??';
+const params = [tableName];
+connection.query(sql, params, function(err, rows) {
+  ...
+});
+```
+
 ```java
+JavaCode:
 // This should REALLY be validated too
 String custname = request.getParameter("customerName");
 // Perform input validation to detect attacks
