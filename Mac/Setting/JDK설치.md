@@ -6,3 +6,7 @@
 https://www.oracle.com/java/technologies/downloads/#jdk19-mac
 
 > <img width="800" src="https://github.com/epikxm/docs/blob/main/Mac/Setting/2023-02-06-01.png?raw=true" />
+
+> <img width="800" src="https://github.com/epikxm/docs/blob/main/Mac/Setting/2023-02-06-02.png?raw=true" />
+
+> <img width="800" src="https://github.com/epikxm/docs/blob/main/Mac/Setting/2023-02-06-03.png?raw=true" />
